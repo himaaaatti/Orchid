@@ -1,9 +1,17 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <iostream>
 
-int main(){
+int main(int argc, char* argv[]){
   int g[9], s, code, gc;
   IplImage *im = NULL, *dst = NULL;
+
+  const char* image_file = "image.jpg";
+  if(argc == 2) 
+  {
+    image_file = argv[1];
+  }
+  std::cout << image_file << std::endl;
 
   im = cvLoadImage("image.jpg", CV_LOAD_IMAGE_GRAYSCALE);
   dst = cvCreateImage(cvSize(im->width, im->height), im->depth, im->nChannels);
